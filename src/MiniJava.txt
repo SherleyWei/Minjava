@@ -119,3 +119,10 @@ locals
 		}
 	}
 	;
+
+method_decl
+locals[
+	String name;     //fuciton name
+	String type;  //return type
+	boolean is_static 
+]
