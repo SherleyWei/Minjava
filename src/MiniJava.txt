@@ -2,6 +2,16 @@ grammar MiniJava;
 @header{
 	import java.util.*;
 }
+
+@parser::members{
+	public enum Scope{MEMBER,FUNC};   //scope
+	
+	public static boolean isArrayType(String a)	{
+		return (a!= null && a.indexOf("[]") != -1);
+	}
+	
+
+
 prog      :   (class_list += class_decl)+;
 
 //define class_decl
