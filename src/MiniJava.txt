@@ -220,3 +220,11 @@ expr returns [String type]:      //type记录表达式的类型名
 		$type = $a.type;
 	}
 	|	a = expr  op='[' b= expr ']'
+	{
+		MiniJavaParser.checkArrayType($a.type,$op);
+		MiniJavaParser.checkType($b.type,$op,"int");
+		if (MiniJavaParser.isArrayType($a.type)){
+			int L =$a.type.length();
+			$type = $a.type.substring(0,L-2);
+		}
+	}
