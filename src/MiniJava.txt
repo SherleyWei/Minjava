@@ -82,6 +82,11 @@ grammar MiniJava;
 		}
 		return v;
 	}
+
+	public static boolean isClassExists(ProgContext prog, String class_name){
+		return findClass(prog, class_name) != null;	
+	}
+	
 	
 
 
