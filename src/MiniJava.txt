@@ -292,3 +292,14 @@ expr returns [String type]:      //type记录表达式的类型名
 	{
 		$type = "boolean";
 	}
+	|  'this'
+	{
+		//check if the "this" object is the class name of the current class
+		ParserRuleContext parent=$ctx.getParent();
+		while(!(parent instanceof Class_declContext)) {
+			parent=parent.getParent();
+		}
+		Class_declContext c=(Class_declContext)parent;
+		$type = c.name;
+	}
+	;
