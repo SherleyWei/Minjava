@@ -106,6 +106,27 @@ grammar MiniJava;
 
 	
 
+	// find a variable name from the scope of an expression.
+	public static Var_declContext findVar(ExprContext expr, String var_name){
+		Var_declContext v =null;
+		ParserRuleContext parent = expr.getParent();
+		while (!(parent instanceof Method_declContext)){
+			parent = parent.getParent();
+		}
+		
+		Method_declContext func = (Method_declContext)parent;
+		v = findVar(func,var_name);
+		if (v==null){
+			v = findPara(func,var_name);
+		}
+		if (v==null){
+			Class_declContext c=(Class_declContext)(func.getParent());
+			v = findVar(c,var_name);
+		}
+		return v;
+	}
+	
+
 
 prog      :   (class_list += class_decl)+;
 
