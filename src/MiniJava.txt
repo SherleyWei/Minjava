@@ -51,3 +51,11 @@ locals
 	MiniJavaParser.Scope scope 
 ]
 	:var_type ID 
+	{
+		String var_name = $ID.text;
+		$ctx.type = $var_type.text;
+		$ctx.name = $ID.text;
+		$ctx.scope = $var_scope;
+		$ctx.is_static = $static_flag;
+		
+		ParserRuleContext parent = $ctx.getParent();
