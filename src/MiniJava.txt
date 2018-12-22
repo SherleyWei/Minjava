@@ -138,3 +138,29 @@ locals[
 	 )*
 	 (stat_list += stat)*
 	'}'
+
+	{
+		$ctx.is_static = ($b.text!=null);
+		//Check if the function can be overloaded
+		Class_declContext parent =(Class_declContext) ($ctx.getParent());
+		if (MiniJavaParser.isFuncExists(parent,$ctx))
+		{
+			System.out.println("overload function:" + $ctx.name + " in class "+ parent.name + "failed"
+			+ " at line " + $LEFT_PARA.line + ":" + $LEFT_PARA.pos	
+			);
+		}
+		else {
+			System.out.println("add function:" + $ctx.name + " to class " + parent.name + " success");		
+		}
+	} 
+	;
+	
+func_head_name:
+	func_type ID
+	{
+		//Record function name and return type name
+		Method_declContext c =(Method_declContext)($ctx.getParent()); 
+		c.name = $ID.text;
+		c.type = $func_type.text;
+	}
+	;	
