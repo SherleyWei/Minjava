@@ -1,0 +1,4 @@
+grammar MiniJava;
+@header{
+	import java.util.*;
+}
