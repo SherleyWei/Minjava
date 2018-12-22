@@ -272,3 +272,15 @@ expr returns [String type]:      //type记录表达式的类型名
 	{
 		$type = "int";
 	}
+	|  ID
+	{
+		String var_name = $ID.text;
+		if(MiniJavaParser.isKeyWord(var_name))   //Check if using keywords as ID
+		{
+			System.out.println("error: keword: " +var_name + " is used as an ID "+ " at " +$ID.line + ":"+$ID.pos);
+		}
+		
+		Var_declContext v = MiniJavaParser.findVar($ctx,var_name);
+		if (v!=null)
+			$type = v.type;
+	}
