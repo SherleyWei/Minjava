@@ -248,3 +248,8 @@ expr returns [String type]:      //type记录表达式的类型名
 	{
 		$type = "boolean";
 	}
+	| 	a=expr op=MUL_OP  b=expr
+	{
+		MiniJavaParser.checkType($a.type,$b.type,$op,"int");
+		$type = "int";
+	}
