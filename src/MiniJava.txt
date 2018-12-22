@@ -31,6 +31,23 @@ grammar MiniJava;
 	}
 
 
+	//Check if the type of two operands meets the requirements	
+	public static void checkType(String a,String b, Token op,String type)
+	{
+		if (a== null || !(a.equals(type))){
+			System.out.println("type mismatched in arg1 of expression at line " +
+				op.getLine() +":" + op.getCharPositionInLine()
+			);
+		}
+		if (b == null || !(b.equals(type))){
+			System.out.println("type mismatched in arg2 of expression at line " +
+				op.getLine() +":" + op.getCharPositionInLine()
+			);
+		}
+	}
+	
+
+
 
 prog      :   (class_list += class_decl)+;
 
