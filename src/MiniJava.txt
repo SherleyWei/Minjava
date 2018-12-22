@@ -213,3 +213,10 @@ stat:
 expr_list:
 	expr(',' expr)*
 	;
+
+expr returns [String type]:      //type记录表达式的类型名
+	'(' a=expr ')'
+	{
+		$type = $a.type;
+	}
+	|	a = expr  op='[' b= expr ']'
