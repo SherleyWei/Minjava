@@ -126,7 +126,24 @@ grammar MiniJava;
 		return v;
 	}
 	
-
+		
+	//Find a variable name in the function's variable list
+	public static Var_declContext findVar(Method_declContext func, String var_name){
+		Var_declContext v =null;
+		List<Var_declContext> var_list = func.var_list;
+		for(Var_declContext e:var_list)	{
+			if (e.name.equals(var_name)){
+				v = e;
+				break;				
+			}			 
+		}
+		return v;
+	}
+	
+	public static boolean isVarExists(Method_declContext func, String var_name){
+		return findVar(func,var_name) != null; 
+	}
+	
 
 prog      :   (class_list += class_decl)+;
 
