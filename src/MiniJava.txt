@@ -164,3 +164,8 @@ func_head_name:
 		c.type = $func_type.text;
 	}
 	;	
+
+para_decl:
+	var=var_decl[false,MiniJavaParser.Scope.FUNC]
+	#ParaDecl
+	;
