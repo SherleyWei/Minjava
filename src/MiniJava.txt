@@ -284,3 +284,7 @@ expr returns [String type]:      //type记录表达式的类型名
 		if (v!=null)
 			$type = v.type;
 	}
+	|  'true'
+	{
+		$type = "boolean";
+	}
