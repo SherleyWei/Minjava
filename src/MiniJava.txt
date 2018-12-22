@@ -94,3 +94,28 @@ locals
 				System.out.println("add new par: " + $ctx.name +" in function " + c.name + " successful");
 			}	
 		}
+
+		else if (parent instanceof Method_declContext){  
+			//if the var is a local variable in a funciton
+			Method_declContext c = (Method_declContext)parent;
+			
+			if (MiniJavaParser.isVarExists(c,var_name))
+			{
+				System.out.println("var " + $ID.text +" in function" + c.name + " is refined " + "at line " 
+					+ $ID.line + ":" + $ID.pos
+				);
+			}
+			else if (MiniJavaParser.isParaExists(c,var_name))
+			{
+				System.out.println("var " + $ID.text +" in function " + c.name 
+				 + " has same name with some para " + "at line "+ $ID.line + ":" + $ID.pos);
+			}
+			else 
+			{
+				System.out.println("add new var: " + $ctx.name 
+					+" in function " + c.name + " successful"
+				);
+			} 
+		}
+	}
+	;
