@@ -126,3 +126,15 @@ locals[
 	String type;  //return type
 	boolean is_static 
 ]
+:
+	//define method
+	('public'|'protected'|'private')? (b='static')? 
+	func_head_name LEFT_PARA (para_list += para_decl (',' para_list += para_decl)*)? RIGHT_PARA
+	'{'
+	 (
+	 	('static' var_list += var_decl[true,MiniJavaParser.Scope.FUNC] SEMICOLON)
+	 	|
+	 	(var_list += var_decl[false,MiniJavaParser.Scope.FUNC] SEMICOLON) 
+	 )*
+	 (stat_list += stat)*
+	'}'
