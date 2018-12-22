@@ -196,3 +196,15 @@ class_body_start:LEFT_BRACE
 	
 class_body_end:RIGHT_BRACE
 	;
+
+stat:
+	'{' (stat)* '}'
+	|'return' (expr)? ';'
+	|	'if' '(' expr ')' stat 'else' stat
+	|	'while' '(' expr ')' stat
+	|	'System.out.println' '(' expr ')' ';'
+	|	ID (array_index)? ASSIGN_OP expr ';'
+	{
+		//Check the stat, the ID on the left must exist, and the name of the expression on the right is the same
+	}
+	;		
