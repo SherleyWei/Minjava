@@ -228,3 +228,11 @@ expr returns [String type]:      //type记录表达式的类型名
 			$type = $a.type.substring(0,L-2);
 		}
 	}
+	|	a=expr op=MEMBER_OP 'length'
+	{
+		MiniJavaParser.checkArrayType($a.type,$op);
+		$type = "int";
+	}
+	|   a=expr op=MEMBER_OP ID '(' (expr_list)? ')'{
+		
+	}
