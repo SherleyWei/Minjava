@@ -3,3 +3,21 @@ grammar MiniJava;
 	import java.util.*;
 }
 prog      :   (class_list += class_decl)+;
+
+//define class_decl
+class_decl
+locals[
+	String name    
+] : 
+     // include class_head_name
+    class_head_name 
+    '{'
+	  ( ('public'|'protected'|'private')? 
+	  	('static' var_list  += var_decl[true,MiniJavaParser.Scope.MEMBER])
+	  	|
+	  	(var_list  += var_decl[false,MiniJavaParser.Scope.MEMBER])
+	  	SEMICOLON
+	  )*
+	   (func_list += method_decl)*
+	'}'
+    ;
