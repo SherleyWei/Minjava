@@ -70,7 +70,19 @@ grammar MiniJava;
 		return keys.contains(id);
 	}
 	
-
+	//Find a class object and return NULL if it doesn't exist
+	public static Class_declContext findClass(ProgContext prog, String class_name){
+		Class_declContext v =null;
+		List<Class_declContext> class_list = prog.class_list;
+		for(Class_declContext e:class_list)	{
+			if (e.name.equals(class_name)){
+				v = e;
+				break;				
+			}			 
+		}
+		return v;
+	}
+	
 
 
 prog      :   (class_list += class_decl)+;
