@@ -169,3 +169,7 @@ para_decl:
 	var=var_decl[false,MiniJavaParser.Scope.FUNC]
 	#ParaDecl
 	;
+
+func_type:
+	'void'|var_type
+	;
