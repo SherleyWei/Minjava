@@ -158,6 +158,34 @@ grammar MiniJava;
 		}			
 		return v;
 	}
+	//check if a parameter already exists
+	public static boolean isParaExists(Method_declContext func, String para_name){
+		return findPara(func,para_name) != null; 
+	}
+	
+	// check if the two function declarations are exactly the same
+	public static boolean isEqual(Method_declContext fun1,Method_declContext fun2) 
+	{
+		boolean flag = (fun1.name.equals(fun2.name) && fun1.para_list.size()==fun2.para_list.size());
+		if(flag){
+			for(int i=0;i<fun1.para_list.size();++i)
+			{
+				ParaDeclContext t1 = (ParaDeclContext)(fun1.para_list.get(i));
+				ParaDeclContext t2 = (ParaDeclContext)(fun2.para_list.get(i));
+				
+				String type1 = t1.var.type;
+				String type2 = t2.var.type;
+				if (!(type1.equals(type2)))
+				{
+					flag = false;
+					break;
+				}
+			}
+		}
+		return flag;
+	}
+	
+
 	
 
 
