@@ -18,6 +18,18 @@ grammar MiniJava;
 		}
 	}
 	
+	public static boolean isRequireType(String a,String type){
+		return (a!=null && a.equals(type));
+	}
+	
+	public static void checkType(String a,Token op,String type){
+		if (!(isRequireType(a,type))){
+			System.out.println("type mismatched :need " + type+ " at line " +
+				op.getLine() +":" + op.getCharPositionInLine()
+			);
+		}
+	}
+
 
 
 prog      :   (class_list += class_decl)+;
