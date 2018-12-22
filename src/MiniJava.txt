@@ -10,6 +10,14 @@ grammar MiniJava;
 		return (a!= null && a.indexOf("[]") != -1);
 	}
 	
+	public static void checkArrayType(String a,Token op)	{
+		if(!isArrayType(a)) {
+			System.out.println("type mismatched :need an array name at line " +
+				op.getLine() +":" + op.getCharPositionInLine()
+			);
+		}
+	}
+	
 
 
 prog      :   (class_list += class_decl)+;
