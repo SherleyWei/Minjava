@@ -87,6 +87,23 @@ grammar MiniJava;
 		return findClass(prog, class_name) != null;	
 	}
 	
+	//Find a variable name in the member list of the class
+	public static Var_declContext findVar(Class_declContext classdecl, String var_name){
+		Var_declContext v =null;
+		List<Var_declContext> var_list = classdecl.var_list;
+		for(Var_declContext e:var_list)	{
+			if (e.name.equals(var_name)){
+				v = e;
+				break;				
+			}			 
+		}
+		return v;
+	}
+	
+	public static boolean isVarExists(Class_declContext obj, String class_name){
+		return findVar(obj, class_name) != null;	
+	}
+
 	
 
 
