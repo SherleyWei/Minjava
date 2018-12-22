@@ -59,3 +59,18 @@ locals
 		$ctx.is_static = $static_flag;
 		
 		ParserRuleContext parent = $ctx.getParent();
+                                if (parent instanceof Class_declContext) {  //Var belongs to a class
+			Class_declContext c =(Class_declContext)(parent);
+			Var_declContext var = MiniJavaParser.findVar(c,var_name);
+			
+			if (var != null && var.is_static == $static_flag){
+				System.out.println("var " + $ID.text + " is refined " + "at line " 
+					+ $ID.line + ":" + $ID.pos
+					);
+			}
+			else {
+				System.out.println("add new member var: " + $ctx.name + 
+					" in class " + c.name + " successful"
+				);
+			}
+		}
