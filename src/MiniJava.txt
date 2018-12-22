@@ -74,3 +74,23 @@ locals
 				);
 			}
 		}
+
+		else if (parent instanceof Para_declContext)
+		{ 
+			//If the var is a function parameter,find the parent node
+			while (!(parent instanceof Method_declContext) ){
+				parent = parent.getParent();
+			}
+						
+			Method_declContext c =(Method_declContext)parent;
+			
+			if (MiniJavaParser.isParaExists(c,var_name))
+			{
+				System.out.println("para " + $ID.text+" in function" + c.name + " is refined " + "at line " 
+					+ $ID.line + ":" + $ID.pos
+					);
+			}
+			else {
+				System.out.println("add new par: " + $ctx.name +" in function " + c.name + " successful");
+			}	
+		}
