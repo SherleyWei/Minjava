@@ -144,6 +144,22 @@ grammar MiniJava;
 		return findVar(func,var_name) != null; 
 	}
 	
+	//Find a variable name in the function's argument list
+	public static Var_declContext findPara(Method_declContext func, String para_name){
+		Var_declContext v =null;
+		List<Para_declContext> para_list = func.para_list;
+		for(Para_declContext e: para_list) {
+				ParaDeclContext t = (ParaDeclContext)e;
+				Var_declContext s = t.var;
+				if (s.name.equals(para_name)) {
+					v = s;
+					break;
+				}
+		}			
+		return v;
+	}
+	
+
 
 prog      :   (class_list += class_decl)+;
 
