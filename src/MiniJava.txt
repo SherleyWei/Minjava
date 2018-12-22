@@ -190,3 +190,9 @@ basic_type:
 array_type:
 	basic_type ('['']')+ 
 	;	
+
+class_body_start:LEFT_BRACE
+	;
+	
+class_body_end:RIGHT_BRACE
+	;
