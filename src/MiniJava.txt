@@ -312,3 +312,11 @@ array_index:
 MEMBER_OP:
 	'.'
 	;
+ASSIGN_OP:
+	 '+='|'-='|'*='|'/='|'='
+	;
+
+SEMICOLON
+	: ';'
+	;
+	
