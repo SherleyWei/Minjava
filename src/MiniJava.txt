@@ -324,3 +324,10 @@ SL_COMMENT
     : '//' .*?  '\n' -> skip  //Filter line comments
     ;
     
+
+LEFT_BRACE:'{';    
+RIGHT_BRACE:'}';
+
+LEFT_PARA:'(';    
+RIGHT_PARA:')';
+
