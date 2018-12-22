@@ -173,3 +173,20 @@ para_decl:
 func_type:
 	'void'|var_type
 	;
+
+
+var_type:
+	array_type
+	|basic_type
+	;
+
+
+basic_type:
+	'int'
+	|'boolean'
+	|ID
+	;
+	
+array_type:
+	basic_type ('['']')+ 
+	;	
