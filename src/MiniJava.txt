@@ -236,3 +236,7 @@ expr returns [String type]:      //type记录表达式的类型名
 	|   a=expr op=MEMBER_OP ID '(' (expr_list)? ')'{
 		
 	}
+	|	'new' basic_type array_index   //Multidimensional array definition
+	{
+		$type = $basic_type.text+$array_index.text;
+	}  
