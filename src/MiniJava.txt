@@ -41,3 +41,13 @@ class_head_name:
 	}
 	; 
 
+//define var declaration and the error detection code
+var_decl[boolean static_flag,MiniJavaParser.Scope var_scope]
+locals
+[
+	String type;
+	String name;
+	boolean is_static = false; 
+	MiniJavaParser.Scope scope 
+]
+	:var_type ID 
