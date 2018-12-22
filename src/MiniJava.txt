@@ -21,3 +21,23 @@ locals[
 	   (func_list += method_decl)*
 	'}'
     ;
+
+//define class_head_name and the error detection
+class_head_name:
+	'class' class_name = ID ( EXTENDS parent_name = ID ) ?
+	{
+		//notified if the class is exited
+		Class_declContext parent =(Class_declContext) ($ctx.getParent());
+		parent.name = $class_name.text;
+		
+		ProgContext prog =(ProgContext) (parent.getParent());
+		
+		if (MiniJavaParser.isClassExists(prog,parent.name))
+			System.out.println("class name: " + parent.name + " is refined " + "at line " 
+					+ $class_name.line + ":" + $class_name.pos
+				);
+		else
+			System.out.println("add new class name:" + parent.name + " to class name list");	
+	}
+	; 
+
