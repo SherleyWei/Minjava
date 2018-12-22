@@ -208,3 +208,8 @@ stat:
 		//Check the stat, the ID on the left must exist, and the name of the expression on the right is the same
 	}
 	;		
+
+
+expr_list:
+	expr(',' expr)*
+	;
