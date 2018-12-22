@@ -240,3 +240,11 @@ expr returns [String type]:      //type记录表达式的类型名
 	{
 		$type = $basic_type.text+$array_index.text;
 	}  
+	|	'new' basic_type '(' ')'              //Univariate
+	{
+		$type = $basic_type.text;
+	}
+	|	'!' a=expr
+	{
+		$type = "boolean";
+	}
