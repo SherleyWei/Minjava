@@ -320,3 +320,7 @@ SEMICOLON
 	: ';'
 	;
 	
+SL_COMMENT
+    : '//' .*?  '\n' -> skip  //Filter line comments
+    ;
+    
