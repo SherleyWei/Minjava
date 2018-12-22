@@ -288,3 +288,7 @@ expr returns [String type]:      //type记录表达式的类型名
 	{
 		$type = "boolean";
 	}
+	|  'false'
+	{
+		$type = "boolean";
+	}
