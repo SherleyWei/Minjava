@@ -46,6 +46,30 @@ grammar MiniJava;
 		}
 	}
 	
+	//Check if the variable is the same as the keyword
+	public static boolean isKeyWord(String id)
+	{
+		List<String> keys = new ArrayList<String>();
+		keys.add("int");
+		keys.add("boolean");
+		keys.add("void");
+		keys.add("if");
+		keys.add("while");
+		keys.add("else");
+		keys.add("public");
+		keys.add("protected");
+		keys.add("default");
+		keys.add("private");
+		keys.add("extends");
+		keys.add("class");
+		keys.add("return");
+		keys.add("true");
+		keys.add("false");
+		keys.add("this");
+		keys.add("super");
+		return keys.contains(id);
+	}
+	
 
 
 
