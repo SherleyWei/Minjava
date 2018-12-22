@@ -2,3 +2,4 @@ grammar MiniJava;
 @header{
 	import java.util.*;
 }
+prog      :   (class_list += class_decl)+;
