@@ -335,3 +335,21 @@ RELATION_OP:
 	'<'|'>'|'<='|'>='|'=='|'!='
 	;
 	
+LOGIC_OP:
+	'&&'|'||';
+
+ADD_OP :'+'|'-'
+	;
+
+MUL_OP	:'*'|'/'
+	;
+
+EXTENDS:
+	'extends'
+	;
+	
+ID  :   [a-zA-Z_][a-zA-Z_0-9]* ;    
+
+INT :   [0-9]+ ;        
+
+WS  :   [ \r\n\t]+ -> skip ; 			
