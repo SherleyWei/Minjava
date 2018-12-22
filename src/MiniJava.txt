@@ -253,3 +253,8 @@ expr returns [String type]:      //type记录表达式的类型名
 		MiniJavaParser.checkType($a.type,$b.type,$op,"int");
 		$type = "int";
 	}
+	| 	a=expr op=ADD_OP b=expr
+	{
+		MiniJavaParser.checkType($a.type,$b.type,$op,"int");
+		$type = "int";
+	}
