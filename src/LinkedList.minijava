@@ -191,7 +191,7 @@ class List{
     }
     
     
-    // Print the linked list
+    // Print
     public boolean Print(){
 	List aux01 ;
 	boolean var_end ;
