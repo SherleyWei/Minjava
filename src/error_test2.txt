@@ -1,0 +1,6 @@
+class class{
+	void f(int x){
+		int y;
+		return;
+	}
+}
